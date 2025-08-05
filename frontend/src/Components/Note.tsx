@@ -46,7 +46,7 @@ function Note(props: NoteProps) {
 
     return (
         <div className="bg-[#222222] border-t-4 border-green-500 rounded-2xl p-5 flex flex-col items-start justify-between gap-5">
-            <div className="flex flex-col items-start justify-center gap-1 flex-1">
+            <div className="flex flex-col items-start justify-start gap-1 flex-1">
                 <h1 className="text-white font-bold text-xl">{props.title}</h1>
                 <p className="text-gray-400">{props.content}</p>
             </div>
