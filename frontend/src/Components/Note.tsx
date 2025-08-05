@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../config/axios";
 import { FaEdit, FaTrash } from "react-icons/fa"
 import { useNavigate } from 'react-router'
 import { toast } from "react-toastify"
@@ -29,7 +29,7 @@ function Note(props: NoteProps) {
         const isAllow: boolean = window.confirm("Are you sure you want to delete this note?");
         if(!isAllow) return;
         try {
-            const response = await axios.delete<Response>(`http://localhost:3000/deleteNote/${props.id}`, {
+            const response = await api.delete<Response>(`/deleteNote/${props.id}`, {
                 withCredentials: true
             });
             if(response?.data.success){
@@ -45,7 +45,7 @@ function Note(props: NoteProps) {
     }
 
     return (
-        <div className="bg-[#222222] border-t-4 border-green-500 rounded-2xl p-5 flex flex-col items-start justify-start gap-5">
+        <div className="bg-[#222222] border-t-4 border-green-500 rounded-2xl p-5 flex flex-col items-start justify-between gap-5 h-full">
             <div className="flex flex-col items-start justify-center gap-1">
                 <h1 className="text-white font-bold text-xl">{props.title}</h1>
                 <p className="text-gray-400">{props.content}</p>
