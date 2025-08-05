@@ -11,6 +11,7 @@ import deleteNote from './models/deleteNote.js';
 import path from 'path';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 dotenv.config();
 if(process.env.NODE_ENV !== "production"){
@@ -78,4 +79,4 @@ if(process.env.NODE_ENV === "production"){
 });
 }
 
-app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}.`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
