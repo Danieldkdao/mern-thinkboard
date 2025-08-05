@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar"
 import Note from "../Components/Note"
 import { FaBook } from "react-icons/fa"
 import { useNavigate } from 'react-router'
-import axios from "axios"
+import api from '../config/axios';
 import useRender from "../Context/useRender"
 
 type Note = {
@@ -37,7 +37,7 @@ function Home() {
 
     async function fetchNotes() {
         try {
-            const response = await axios.get<Response>("http://localhost:3000/getNotes", {
+            const response = await api.get<Response>("/getNotes", {
                 withCredentials: true
             });
             if(response?.data.success){

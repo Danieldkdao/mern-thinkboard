@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../config/axios';
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaTrash } from "react-icons/fa6"
 import { useNavigate, useParams } from 'react-router'
@@ -33,7 +33,7 @@ function Editid() {
 
     async function setPrev(){
         try {
-            const response = await axios.get<Response>(`http://localhost:3000/getNote/${id}`, {
+            const response = await api.get<Response>(`/getNote/${id}`, {
                 withCredentials: true
             });
             if(response?.data.success){
@@ -52,7 +52,7 @@ function Editid() {
         try {
             const formData = new FormData(e.currentTarget);
             const data = Object.fromEntries(formData.entries());
-            const response = await axios.put<Res>(`http://localhost:3000/updateNote/${id}`, data, {
+            const response = await api.put<Res>(`/updateNote/${id}`, data, {
                 withCredentials: true
             });
             if(response?.data.success){
@@ -69,7 +69,7 @@ function Editid() {
 
     async function deleteNote(){
         try {
-            const response = await axios.delete<Response>(`http://localhost:3000/deleteNote/${id}`, {
+            const response = await api.delete<Response>(`/deleteNote/${id}`, {
                 withCredentials: true
             });
             if(response?.data.success){

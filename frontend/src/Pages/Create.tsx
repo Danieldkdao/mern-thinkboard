@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../config/axios';
 import React from 'react'
 import { FaArrowLeft } from "react-icons/fa6"
 import { useNavigate } from 'react-router'
@@ -18,7 +18,7 @@ function Create() {
         try {
             const formData = new FormData(e.currentTarget);
             const data = Object.fromEntries(formData.entries());
-            const response = await axios.post<Response>("http://localhost:3000/addNote", data, {
+            const response = await api.post<Response>("/addNote", data, {
                 withCredentials: true
             });
 
